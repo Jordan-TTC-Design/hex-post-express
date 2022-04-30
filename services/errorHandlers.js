@@ -1,13 +1,10 @@
-const headers = require('../header');
-
-function allError(statusNumber,res,message) {
-  res.writeHead(statusNumber, headers);
-  res.write(
-    JSON.stringify({
-      status: 'false',
+function allError(statusNumber, res, message) {
+  res
+    .status(statusNumber)
+    .send({
+      status: false,
       message: message,
-    }),
-  );
-  res.end();
+    })
+    .end();
 }
-module.exports = {allError};
+module.exports = { allError };

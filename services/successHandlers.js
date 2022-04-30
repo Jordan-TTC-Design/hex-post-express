@@ -1,24 +1,18 @@
-const headers = require('../header');
-
-function allSuccess(statusNumber, res, message) {
-  res.writeHead(statusNumber, headers);
-  res.write(
-    JSON.stringify({
-      status: 'success',
+function allSuccess(res, message) {
+  res
+    .send({
+      status: true,
       message: message,
-    }),
-  );
-  res.end();
+    })
+    .end();
 }
-function returnDataSuccess(statusNumber, res, message,data) {
-  res.writeHead(statusNumber, headers);
-  res.write(
-    JSON.stringify({
-      status: 'success',
+function returnDataSuccess(res, message, data) {
+  res
+    .send({
+      status: true,
+      data: data,
       message: message,
-      data,
-    }),
-  );
-  res.end();
+    })
+    .end();
 }
 module.exports = { allSuccess, returnDataSuccess };
